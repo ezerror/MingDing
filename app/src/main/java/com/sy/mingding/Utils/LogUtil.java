@@ -1,0 +1,51 @@
+package com.sy.mingding.Utils;
+
+import android.content.Context;
+import android.util.Log;
+
+public class LogUtil {
+
+    public static String sTAG = "LogUtil";
+
+    //控制是否要输出log
+    public static boolean sIsRelease = false;
+
+    /**
+     * 如果是要发布了，可以在application里面把这里release一下，这样子就没有log输出了
+     */
+    public static void init(String baseTag, boolean isRelease) {
+        sTAG = baseTag;
+        sIsRelease = isRelease;
+    }
+
+    public static void d(Context context, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + context.getClass(), content);
+        }
+    }
+
+    public static void v(Context context, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + context.getClass(), content);
+        }
+    }
+
+    public static void i(Context context, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + context.getClass(), content);
+        }
+    }
+
+    public static void w(Context context, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + context.getClass(), content);
+        }
+    }
+
+    public static void e(Context context, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + context.getClass(), content);
+        }
+    }
+}
+
