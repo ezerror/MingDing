@@ -24,6 +24,12 @@ public class LogUtil {
         }
     }
 
+    public static void d(String TAG, String content) {
+        if (!sIsRelease) {
+            Log.d("[" + sTAG + "]" + TAG, content);
+        }
+    }
+
     public static void v(Context context, String content) {
         if (!sIsRelease) {
             Log.d("[" + sTAG + "]" + context.getClass(), content);

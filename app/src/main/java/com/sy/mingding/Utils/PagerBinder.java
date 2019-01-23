@@ -13,18 +13,24 @@ public class PagerBinder {
     private static Menu mNavigationMenu;
 
     public static void bind(final BottomNavigationView bottomNavigationView, final ViewPager viewPager){
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 switch (item.getItemId()) {
                     case R.id.navigation_todo:
                         viewPager.setCurrentItem(0);
+                        LogUtil.d(getClass().getName(),"click --->todo");
                         return true;
                     case R.id.navigation_statistic:
                         viewPager.setCurrentItem(1);
+                        LogUtil.d(getClass().getName(),"click --->statistic");
                         return true;
                     case R.id.navigation_settings:
                         viewPager.setCurrentItem(2);
+                        LogUtil.d(getClass().getName(),"click --->settings");
                         return true;
                 }
                 return false;

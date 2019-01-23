@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+
 public abstract class BaseFragment extends Fragment {
 
 
@@ -20,6 +21,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRoorview = onSubViewLoaded(inflater,container);
         return mRoorview;
+
     }
     protected abstract View onSubViewLoaded(LayoutInflater layoutInflater, ViewGroup container);
 
