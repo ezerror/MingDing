@@ -12,7 +12,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_more_vert"
         android:orderInCategory="100"
         android:title="helos"
         app:showAsAction="never" />

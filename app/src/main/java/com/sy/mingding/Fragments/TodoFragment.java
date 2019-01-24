@@ -2,16 +2,12 @@ package com.sy.mingding.Fragments;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
-import com.sy.mingding.Activity.UserLoginActivity;
+import com.sy.mingding.Activity.UserActivity;
 import com.sy.mingding.Base.BaseFragment;
-import com.sy.mingding.MainActivity;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.LogUtil;
 
@@ -40,7 +36,7 @@ public class TodoFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
               //Toast.makeText(container.getContext(), "大家好", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(getActivity(),UserLoginActivity.class);
+                Intent intent=new Intent(getActivity(),UserActivity.class);
                 startActivity(intent);
 
             }

@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.sy.mingding.R;
 
-public class UserLoginActivity extends Activity {
+public class UserActivity extends Activity {
 
     private Toolbar mUserTopBar;
 

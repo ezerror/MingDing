@@ -2,95 +2,88 @@
 
 package com.sy.mingding;
 
-import android.content.ClipData;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
 
-import com.sy.mingding.Adapter.MainContentAdapter;
-import com.sy.mingding.Utils.LogUtil;
-import com.sy.mingding.Utils.PagerBinder;
+import com.sy.mingding.Activity.LoginActivity;
+import com.sy.mingding.Activity.MainViewActivity;
+import com.sy.mingding.Activity.RegisterActivity;
+import com.sy.mingding.widget.FullScreenVideoView;
 
 
 public class MainActivity extends FragmentActivity {
 
-    private ViewPager mContentPager;
-    private BottomNavigationView mMainNavigation;
-    private Menu mNavigationMenu;
+
+    private FullScreenVideoView mVideoView;
+    private TextView mLoginButton;
+    private TextView mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        LogUtil.d(this,"---> hello world");
-        initView();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_start);
+        mVideoView = (FullScreenVideoView) this.findViewById(R.id.videoView);
+        playVideoView();
+        mLoginButton = findViewById(R.id.login_button_tv);
+        mRegisterButton = findViewById(R.id.register_button_tv);
         initEvent();
+
     }
 
     private void initEvent() {
-        //将底部导航栏和viewpager绑定
-//        PagerBinder.bind(mMainNavigation,mContentPager);
-
-        mMainNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.navigation_todo:
-                        mContentPager.setCurrentItem(0);
-                        LogUtil.d(getClass().getName(),"click --->todo");
-                        return true;
-                    case R.id.navigation_statistic:
-                        mContentPager.setCurrentItem(1);
-                        LogUtil.d(getClass().getName(),"click --->statistic");
-                        return true;
-                    case R.id.navigation_settings:
-                        mContentPager.setCurrentItem(2);
-                        LogUtil.d(getClass().getName(),"click --->settings");
-                        return true;
-                }
-                return false;
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
-
-        mNavigationMenu = mMainNavigation.getMenu();
-        mContentPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                MenuItem NavigationMenuItem;
-                NavigationMenuItem= mNavigationMenu.getItem(i);
-                NavigationMenuItem.setChecked(true);
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
 
-    private void initView() {
-        mMainNavigation = (BottomNavigationView) findViewById(R.id.main_navigation);
-        mContentPager = (ViewPager) findViewById(R.id.content_pager);
-        mNavigationMenu = mMainNavigation.getMenu();
-
-        //创建内容适配器
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
-        MainContentAdapter mainContentAdapter =new MainContentAdapter(supportFragmentManager);
-        mContentPager.setAdapter(mainContentAdapter);
-
-
+    private void playVideoView() {
+        mVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video));
+        //播放
+        mVideoView.start();
+        //循环播放
+        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mVideoView.start();
+            }
+        });
     }
+
+    //返回重启加载
+    @Override
+    protected void onRestart() {
+        playVideoView();
+        super.onRestart();
+    }
+
+    //防止锁屏或者切出的时候，音乐在播放
+    @Override
+    protected void onStop() {
+        mVideoView.stopPlayback();
+        super.onStop();
+    }
+
+
 }
