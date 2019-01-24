@@ -26,7 +26,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp">
 
-        <TextView
+
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/login_button_tv"
             android:clickable="true"
             android:focusable="true"
@@ -41,7 +42,7 @@
             android:textColor="#333"
             android:textSize="20dp"/>
 
-        <TextView
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/register_button_tv"
             android:clickable="true"
             android:focusable="true"
@@ -54,7 +55,7 @@
             android:gravity="center"
             android:text="注册"
             android:textColor="#333"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
     </RelativeLayout>
 

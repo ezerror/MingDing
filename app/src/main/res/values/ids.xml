@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+    <item name="bg" type="id"></item>
+    <item name="logo" type="id"></item>
+    <item name="slogen" type="id"></item>
+    <item name="loginarea" type="id"></item>
+    <item name="username" type="id"></item>
+    <item name="akjnbskjna" type="id"></item>
+    <item name="password" type="id"></item>
+    <item name="regist" type="id"></item>
+    <item name="login" type="id"></item>
+    <item name="forgetPassword" type="id"></item>
+
+</resources>

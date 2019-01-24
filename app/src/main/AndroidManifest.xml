@@ -21,6 +21,11 @@
         <activity android:name=".Activity.MainViewActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.sy.mingding.BmobContentProvider">
+        </provider>
     </application>
 
 </manifest>

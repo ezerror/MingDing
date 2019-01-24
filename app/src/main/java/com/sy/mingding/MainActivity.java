@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -21,8 +22,8 @@ public class MainActivity extends FragmentActivity {
 
 
     private FullScreenVideoView mVideoView;
-    private TextView mLoginButton;
-    private TextView mRegisterButton;
+    private AppCompatButton mLoginButton;
+    private AppCompatButton mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
