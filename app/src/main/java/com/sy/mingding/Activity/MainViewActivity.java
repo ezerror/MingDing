@@ -3,17 +3,27 @@ package com.sy.mingding.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.sy.mingding.Adapter.MainContentAdapter;
+import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
+import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.Utils.LogUtil;
+
+import cn.bmob.v3.BmobUser;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class MainViewActivity extends FragmentActivity {
 
@@ -25,9 +35,16 @@ public class MainViewActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityManager.addActivity(this);
         LogUtil.d(this,"---> hello world");
         initView();
         initEvent();
+
+
+        //动态申请权限  api23以上
+        String[] Permission={WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE};
+        ActivityCompat.requestPermissions(this,Permission,1);
+
     }
 
 

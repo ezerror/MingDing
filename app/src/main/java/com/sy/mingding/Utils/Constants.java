@@ -9,4 +9,7 @@ public class Constants {
     public final static int INDEX_SETTINGS =2;
     //主页面-页面个数
     public final static int PAGE_COUNT=3;
+
+    //请求--打开相册
+    public final static int REQUEST_GALLERY =1;
 }

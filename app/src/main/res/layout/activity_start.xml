@@ -2,23 +2,46 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.sy.mingding.widget.FullScreenVideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/transparent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="58dp"
         android:gravity="center"
         android:text="酩酊"
         android:textColor="#fff"
         android:textSize="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="132dp"
+        android:gravity="center"
+        android:text="一起来闷两口~"
+        android:textColor="#fff"
+        android:textSize="25dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,34 +51,21 @@
 
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/login_button_tv"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
+            android:id="@+id/start_button_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/selector_click"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape"
+            android:alpha="1"
             android:gravity="center"
-            android:text="登录"
-            android:textColor="#333"
-            android:textSize="20dp"/>
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/register_button_tv"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/selector_click"
-            android:gravity="center"
-            android:text="注册"
-            android:textColor="#333"
+            android:text="立即加入"
+            android:textColor="#fff"
             android:textSize="20dp" />
+
+
 
     </RelativeLayout>
 

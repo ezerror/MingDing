@@ -1,6 +1,6 @@
 
 
-package com.sy.mingding;
+package com.sy.mingding.Activity;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -10,32 +10,31 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
 
-import com.sy.mingding.Activity.LoginActivity;
-import com.sy.mingding.Activity.MainViewActivity;
-import com.sy.mingding.Activity.RegisterActivity;
+import com.sy.mingding.R;
+import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.widget.FullScreenVideoView;
 
+import cn.bmob.v3.BmobUser;
 
-public class MainActivity extends FragmentActivity {
+
+public class StartActivity extends FragmentActivity {
 
 
     private FullScreenVideoView mVideoView;
     private AppCompatButton mLoginButton;
-    private AppCompatButton mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityManager.addActivity(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_start);
         mVideoView = (FullScreenVideoView) this.findViewById(R.id.videoView);
         playVideoView();
-        mLoginButton = findViewById(R.id.login_button_tv);
-        mRegisterButton = findViewById(R.id.register_button_tv);
+        mLoginButton = findViewById(R.id.start_button_tv);
         initEvent();
 
     }
@@ -44,19 +43,18 @@ public class MainActivity extends FragmentActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent=new Intent(StartActivity.this,LoginActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
+
+        //判断是否已经登录
+        if (BmobUser.isLogin()) {
+            Intent intent =new Intent(StartActivity.this,MainViewActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void playVideoView() {

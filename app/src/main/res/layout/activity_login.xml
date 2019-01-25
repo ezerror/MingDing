@@ -39,49 +39,47 @@
         android:layout_marginRight="16.0dip">
 
             <com.sy.mingding.widget.AutoFillEmailEditText
-            android:id="@id/username"
-            android:layout_width="fill_parent"
-            android:layout_height="70.0dip"
-            android:layout_marginLeft="22.0dip"
-            android:layout_marginTop="10.0dip"
-            android:layout_marginRight="10.0dip"
-            android:layout_toLeftOf="@id/akjnbskjna"
-            android:ems="10"
-            android:hint="用户名"
-            android:inputType="textEmailAddress"
-            android:textSize="12.0sp"
-            app:AutoFillEmailEditText_default_drop_down_divider="true"
-            app:AutoFillEmailEditText_default_drop_down_key_color="#ff505160"
-            app:AutoFillEmailEditText_domains="/@qq.com,@163.com,126.com,@gmail.com," />
+                android:id="@id/username"
+                android:layout_width="fill_parent"
+                android:layout_height="70.0dip"
+                android:layout_marginLeft="22.0dip"
+                android:layout_marginTop="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_toLeftOf="@id/akjnbskjna"
+                android:ems="10"
+                android:hint="用户名"
+                android:inputType="textEmailAddress"
+                android:textSize="12.0sp"
+                app:AutoFillEmailEditText_default_drop_down_divider="true"
+                app:AutoFillEmailEditText_default_drop_down_key_color="#ff505160"
+                app:AutoFillEmailEditText_domains="/@qq.com,@163.com,126.com,@gmail.com," />
 
-        <TextView
-            android:id="@id/akjnbskjna"
-            android:layout_width="wrap_content"
-            android:layout_height="30.0dip"
-            android:layout_alignBaseline="@id/username"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="3.0dip"
-            android:gravity="center"
-            android:text="没有邮箱？"
-            android:textColor="#ff505160"
-            android:textSize="11.0sp" />
+            <TextView
+                android:id="@id/akjnbskjna"
+                android:layout_width="wrap_content"
+                android:layout_height="30.0dip"
+                android:layout_alignBaseline="@id/username"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3.0dip"
+                android:gravity="center"
+                android:text="没有邮箱？"
+                android:textColor="#ff505160"
+                android:textSize="11.0sp" />
 
-        <com.sy.mingding.widget.AutoFillEmailEditText
-            android:id="@id/password"
-            android:layout_width="fill_parent"
-            android:layout_height="70.0dip"
-            android:layout_below="@id/username"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="22.0dip"
-            android:layout_marginTop="3.0dip"
-            android:layout_marginRight="22.0dip"
-            android:ems="10"
-            android:hint="密码"
-            android:inputType="textPassword"
-            android:textSize="12.0sp" />
-
-
-
+            <EditText
+                android:id="@id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="70.0dip"
+                android:layout_below="@id/username"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="22.0dip"
+                android:layout_marginTop="3.0dip"
+                android:layout_marginRight="22.0dip"
+                android:ems="10"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:textSize="12.0sp"
+                />
 
     </com.gc.materialdesign.views.Card>
 
@@ -99,7 +97,9 @@
         android:textColor="#ffffffff" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@id/login"
+        android:id="@+id/login"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/regist"

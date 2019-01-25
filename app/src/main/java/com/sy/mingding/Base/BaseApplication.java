@@ -16,7 +16,7 @@ public class BaseApplication extends Application {
         LogUtil.init(this.getPackageName(),false);
 
         //初始化Bmob
-     //   Bmob.initialize(this,"67ad7af91544222fc4c4bab406ebe024");
+        Bmob.initialize(this,"67ad7af91544222fc4c4bab406ebe024");
     }
 
 
