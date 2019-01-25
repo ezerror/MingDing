@@ -10,6 +10,7 @@
     <item name="password" type="id"></item>
     <item name="regist" type="id"></item>
     <item name="login" type="id"></item>
+    <item name="username_et" type="id"></item>
     <item name="forgetPassword" type="id"></item>
 
 </resources>

@@ -3,13 +3,10 @@ package com.sy.mingding.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.EditText;
-
-import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.Utils.UserUtil;
@@ -69,7 +66,7 @@ public class LoginActivity extends Activity  {
 
 
     private void initView() {
-        mUserNameET = findViewById(R.id.username);
+        mUserNameET = findViewById(R.id.username_et);
         mPassWordET = findViewById(R.id.password);
         mRegisterButton = findViewById(R.id.regist);
         mLoginButton = findViewById(R.id.login);

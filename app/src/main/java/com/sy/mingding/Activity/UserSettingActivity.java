@@ -103,10 +103,12 @@ public class UserSettingActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.alter_nickname_btn:
                 alterNickname();
+                break;
             case R.id.profile_image_usersettings:
                 Intent image_intent = new Intent(Intent.ACTION_GET_CONTENT);
                 image_intent.setType("image/*");
                 startActivityForResult(image_intent, Constants.REQUEST_GALLERY);
+                break;
 
         }
     }

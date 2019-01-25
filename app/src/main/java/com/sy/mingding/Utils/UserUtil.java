@@ -10,6 +10,7 @@ import com.sy.mingding.Activity.LoginActivity;
 import com.sy.mingding.Activity.MainViewActivity;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
+import com.sy.mingding.widget.Dialog;
 
 import java.io.File;
 
@@ -23,7 +24,7 @@ import cn.bmob.v3.listener.UpdateListener;
 public class UserUtil {
 
     //User注册
-    public static void User_signUp(final View view,String username,String password) {
+    public static void User_signUp(final View view, final String username, final String password) {
         final User user = new User();
         user.setUsername(username);
         user.setNickname(username);
@@ -34,6 +35,9 @@ public class UserUtil {
             public void done(User user, BmobException e) {
                 if (e == null) {
                     Snackbar.make(view, "注册成功", Snackbar.LENGTH_LONG).show();
+                    Dialog.showWaiting(view.getContext(),"正在注册中···",3000);
+                    user_login(view,view.getContext(),username,password);
+
                 } else {
                     switch (e.getErrorCode()){
                         case 304:Snackbar.make(view, "该用户名已被注册" , Snackbar.LENGTH_LONG).show();
@@ -52,7 +56,9 @@ public class UserUtil {
                 if (e == null) {
                     Snackbar.make(view, "登录成功：" + user.getUsername(), Snackbar.LENGTH_LONG).show();
                     Intent intent =new Intent(context,MainViewActivity.class);
+                    ActivityManager.exit();
                     context.startActivity(intent);
+
 
                 } else {
                     Snackbar.make(view, "登录失败：" + e.getErrorCode()+e.getMessage(), Snackbar.LENGTH_LONG).show();
@@ -86,10 +92,10 @@ public class UserUtil {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-                    Snackbar.make(view, "更新用户信息成功：" + user.getNickname(), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "更新成功" , Snackbar.LENGTH_LONG).show();
                 } else {
-                    Snackbar.make(view, "更新用户信息失败：" + e.getMessage(), Snackbar.LENGTH_LONG).show();
-                    Log.e("error", e.getMessage());
+                    Snackbar.make(view, "更新失败" , Snackbar.LENGTH_LONG).show();
+                    //Log.e("error", e.getMessage());
                 }
             }
         });
@@ -101,10 +107,10 @@ public class UserUtil {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-                    Snackbar.make(view, "更新用户ICON成功：", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "头像更换成功：", Snackbar.LENGTH_LONG).show();
                 } else {
-                    Snackbar.make(view, "更新用户ICON失败：" + e.getMessage(), Snackbar.LENGTH_LONG).show();
-                    Log.e("error", e.getMessage());
+                    Snackbar.make(view, "头像更换失败，请稍后再试" , Snackbar.LENGTH_LONG).show();
+                    //Snackbar.make(view, "头像更换失败，请稍后再试" + e.getMessage(), Snackbar.LENGTH_LONG).show();
                 }
             }
         });
