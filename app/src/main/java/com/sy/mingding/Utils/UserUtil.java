@@ -8,11 +8,14 @@ import android.view.View;
 
 import com.sy.mingding.Activity.LoginActivity;
 import com.sy.mingding.Activity.MainViewActivity;
+import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.widget.Dialog;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
@@ -26,6 +29,7 @@ public class UserUtil {
     //User注册
     public static void User_signUp(final View view, final String username, final String password) {
         final User user = new User();
+        //todo:
         user.setUsername(username);
         user.setNickname(username);
         user.setPassword(password);

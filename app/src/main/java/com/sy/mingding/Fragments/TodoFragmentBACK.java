@@ -1,17 +1,14 @@
 package com.sy.mingding.Fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 import com.sy.mingding.Activity.SettingActivity;
@@ -20,8 +17,6 @@ import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.LogUtil;
-import com.sy.mingding.Utils.ProjectUtil;
 import com.sy.mingding.Utils.UserUtil;
 
 import java.util.ArrayList;
@@ -33,7 +28,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class TodoFragment extends BaseFragment {
+public class TodoFragmentBACK extends BaseFragment {
 
     private View mRootView;
     private static final String TAG = "TodoFragment";
@@ -43,14 +38,11 @@ public class TodoFragment extends BaseFragment {
     private TodoListAdapter mTodoListAdapter;
     private List<Project> mData=new ArrayList<>();
     private SwipeRefreshLayout mTodoSwipeRefreshLayout;
-    private List<Object> mDataList;//顶部
-    private List<Project> mProject;
 
     @Override
     protected View onSubViewLoaded(LayoutInflater layoutInflater, final ViewGroup container) {
         initSubView(layoutInflater,container);
         initSubEvent(layoutInflater,container);
-//        initData();
 
         //刷新
         ToolbarRefresh();
@@ -62,38 +54,6 @@ public class TodoFragment extends BaseFragment {
         return mRootView;
 
     }
-//
-//    private void initData() {
-//
-//        //首先获取改用户的ProjectBean
-//        if (BmobUser.isLogin()) {
-//            BmobQuery<Project> query = new BmobQuery<>();
-//            query.addWhereEqualTo("userId", BmobUser.getCurrentUser(User.class));
-//            query.order("createdAt");
-//            //包含作者信息
-//            query.include("userId");
-//            query.findObjects(new FindListener<Project>() {
-//
-//                @Override
-//                public void done(List<Project> object, BmobException e) {
-//
-//                    if (e == null) {
-//                        mProject=object;
-//                    } else {
-//                    }
-//                }
-//
-//            });
-//        } else {
-//            // Snackbar.make(view, "请先登录", Snackbar.LENGTH_LONG).show();
-//        }
-//
-//
-//
-//    }
-
-
-
 
     private void initSubEvent(LayoutInflater layoutInflater, ViewGroup container) {
         //LogUtil.d(TAG,"线程名称-->"+Thread.currentThread().getName());
