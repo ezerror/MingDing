@@ -1,6 +1,8 @@
 package com.sy.mingding.Bean;
 
-public class Project {
+import cn.bmob.v3.BmobObject;
+
+public class Project extends BmobObject  {
     private String projectName;
     private User userId;
 
@@ -19,4 +21,6 @@ public class Project {
     public void setUserId(User userId) {
         this.userId = userId;
     }
+
+
 }

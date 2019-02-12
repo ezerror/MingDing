@@ -1,4 +1,4 @@
-package com.sy.mingding.Utils;
+package com.sy.mingding.Utils.BeanUtils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import com.sy.mingding.Activity.MainViewActivity;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
+import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.widget.Dialog;
 
 import java.io.File;

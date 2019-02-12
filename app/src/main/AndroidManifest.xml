@@ -37,6 +37,7 @@
         <activity android:name=".Activity.MainViewActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.UserSettingActivity"/>
+        <activity android:name=".Activity.ProjectManageActivity"/>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.sy.mingding.BmobContentProvider">

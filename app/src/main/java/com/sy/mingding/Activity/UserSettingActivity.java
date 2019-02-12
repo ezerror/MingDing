@@ -28,7 +28,7 @@ import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.Utils.Constants;
 import com.sy.mingding.Utils.ContentUriUtil;
 import com.sy.mingding.Utils.LogUtil;
-import com.sy.mingding.Utils.UserUtil;
+import com.sy.mingding.Utils.BeanUtils.UserUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

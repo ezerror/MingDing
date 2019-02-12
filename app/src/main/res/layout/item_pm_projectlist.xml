@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="16dp"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/pm_list_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试"
+            android:textColor="#7e7e7e"
+            android:textSize="25sp" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/pm_btn_addTodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/pm_btn_delProject"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_add" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/pm_btn_delProject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_delete_white_24dp" />
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pm_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+</LinearLayout>

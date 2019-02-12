@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
-import com.sy.mingding.Utils.UserUtil;
+import com.sy.mingding.Utils.BeanUtils.UserUtil;
 import com.sy.mingding.widget.AutoFillEmailEditText;
 
 import cn.bmob.v3.BmobUser;

@@ -12,4 +12,15 @@ public class Constants {
 
     //请求--打开相册
     public final static int REQUEST_GALLERY =1;
+
+
+    public final static String EVENT_ADD_PROJECT="#8000";
+    public final static String EVENT_ADD_TODO ="#9000";
+
+
+
+    public final static int HANDLER_ADD_PROJECT =100;
+    public final static int HANDLER_ADD_TODO =101;
+    public final static int HANDLER_CLOSE_ADD_PROJECT_WAITING_DIALOG =1001;
+
 }

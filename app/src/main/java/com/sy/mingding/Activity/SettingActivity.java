@@ -14,9 +14,7 @@ import com.squareup.picasso.Picasso;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
-import com.sy.mingding.Utils.UserUtil;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import com.sy.mingding.Utils.BeanUtils.UserUtil;
 
 public class SettingActivity extends Activity {
 

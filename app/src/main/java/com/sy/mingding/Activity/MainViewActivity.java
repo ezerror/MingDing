@@ -1,6 +1,7 @@
 package com.sy.mingding.Activity;
 
 
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sy.mingding.Adapter.MainContentAdapter;
+import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
@@ -42,7 +44,7 @@ public class MainViewActivity extends FragmentActivity {
 
 
         //动态申请权限  api23以上
-        String[] Permission={WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE};
+        String[] Permission= {WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE};
         ActivityCompat.requestPermissions(this,Permission,1);
 
     }

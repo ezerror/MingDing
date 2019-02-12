@@ -1,29 +1,39 @@
 package com.sy.mingding.Bean;
 
-public class Todo {
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobPointer;
 
-    /** TODO名 */
+public class Todo extends BmobObject {
+
     private String todoName;
-    /** 项目ID */
-    private String projectId ;
+    private Project project ;
+    private User user;
 
 
 
 
-    /** TODO名 */
+
     public String getTodoName(){
         return this.todoName;
     }
-    /** TODO名 */
     public void setTodoName(String todoName){
         this.todoName = todoName;
     }
-    /** 项目ID */
-    public String getProjectId(){
-        return this.projectId;
+
+    public User getUser() {
+        return user;
     }
-    /** 项目ID */
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
