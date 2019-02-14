@@ -2,13 +2,20 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <Button
+        android:id="@+id/btn_getData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="38sp"
-        android:layout_centerInParent="true"
-        android:text="统计页面"
-
+        android:text="获取日期"
         />
+
+    <Button
+        android:id="@+id/btn_bmob_getData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="101dp"
+        android:text="BMOB获取日期" />
 
 </RelativeLayout>

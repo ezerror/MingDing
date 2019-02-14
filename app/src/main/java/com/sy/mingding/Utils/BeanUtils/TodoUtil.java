@@ -78,7 +78,6 @@ public class TodoUtil {
            public void done(String s, BmobException e) {
                if (e == null) {
 //                   Snackbar.make(view, "TODO添加成功：" + s, Snackbar.LENGTH_LONG).show();
-
                        BaseApplication.mHandler.sendEmptyMessage(Constants.HANDLER_ADD_TODO);
 
                } else {
@@ -89,6 +88,30 @@ public class TodoUtil {
        });
     }
 
+    public static void updateAllTodoSumTime(){
 
+    }
 
+    /**
+     * 在添加Timing的时候 更新该TODO的总时间.
+     * 在该方法使用{@link com.sy.mingding.Utils.BeanUtils.TimingUtil#addTiming(String, Integer)}  }
+     * @param todoid todo id
+     * @param time   时间
+     */
+
+    public static void updateTodoSumTime(final String todoid, final Integer time){
+        Todo todo=new Todo();
+        todo.setObjectId(todoid);
+        todo.increment("sumTime",time);
+        todo.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e != null) {
+                    //
+                }{
+                    //
+                }
+            }
+        });
+    }
 }

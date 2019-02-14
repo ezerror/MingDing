@@ -12,6 +12,7 @@ import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
+import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.widget.Dialog;
 
 import java.io.File;
@@ -41,11 +42,12 @@ public class UserUtil {
                 if (e == null) {
                     Snackbar.make(view, "注册成功", Snackbar.LENGTH_LONG).show();
                     Dialog.showWaiting(view.getContext(),"正在注册中···",3000);
-                    user_login(view,view.getContext(),username,password);
+                    user_login(view,username,password);
 
                 } else {
+                    LogUtil.e("LOGINEXCEPTE",e.getErrorCode()+e.getMessage());
                     switch (e.getErrorCode()){
-                        case 304:Snackbar.make(view, "该用户名已被注册" , Snackbar.LENGTH_LONG).show();
+                        case 202:Snackbar.make(view, "用户名"+username+"已被注册" , Snackbar.LENGTH_LONG).show();
                     }
                 }
             }
@@ -54,23 +56,24 @@ public class UserUtil {
 
     //登录
     //仅在LoginActivity使用
-    public static void user_login(final View view, final Context context, String username, String password) {
+    public static void user_login(final View view, String username, String password) {
         BmobUser.loginByAccount(username, password, new LogInListener<User>() {
             @Override
             public void done(User user, BmobException e) {
                 if (e == null) {
-                    Snackbar.make(view, "登录成功：" + user.getUsername(), Snackbar.LENGTH_LONG).show();
-                    Intent intent =new Intent(context,MainViewActivity.class);
+                //    Snackbar.make(view, "登录成功：" + user.getUsername(), Snackbar.LENGTH_LONG).show();
+                    Intent intent =new Intent(view.getContext(),MainViewActivity.class);
                     ActivityManager.exit();
-                    context.startActivity(intent);
+                    view.getContext().startActivity(intent);
 
 
                 } else {
-                    Snackbar.make(view, "登录失败：" + e.getErrorCode()+e.getMessage(), Snackbar.LENGTH_LONG).show();
-
+                    //Snackbar.make(view, "登录失败：" + e.getErrorCode()+e.getMessage(), Snackbar.LENGTH_LONG).show();
+                    LogUtil.e("LOGINEXCEPTE",e.getErrorCode()+e.getMessage());
                     switch (e.getErrorCode()){
                         case 109:Snackbar.make(view, "登录失败：该用户未注册 " , Snackbar.LENGTH_LONG).show();
                         case 304:Snackbar.make(view, "登录失败：用户名为空" , Snackbar.LENGTH_LONG).show();
+
                     }
                 }
             }

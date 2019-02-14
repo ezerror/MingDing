@@ -43,7 +43,7 @@ public class LoginActivity extends Activity  {
             public void onClick(View v) {
                 String username = mUserNameET.getText().toString();
                 String password = mPassWordET.getText().toString();
-                UserUtil.user_login(mRootContentView,getApplicationContext(),username,password);
+                UserUtil.user_login(mRootContentView,username,password);
             }
         });
         mRegisterButton.setOnClickListener(new View.OnClickListener() {

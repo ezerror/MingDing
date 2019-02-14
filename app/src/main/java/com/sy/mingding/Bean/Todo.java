@@ -8,6 +8,7 @@ public class Todo extends BmobObject {
     private String todoName;
     private Project project ;
     private User user;
+    private Integer sumTime;
 
 
 
@@ -35,5 +36,13 @@ public class Todo extends BmobObject {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Integer getSumTime() {
+        return sumTime;
+    }
+
+    public void setSumTime(Integer sumTime) {
+        this.sumTime = sumTime;
     }
 }

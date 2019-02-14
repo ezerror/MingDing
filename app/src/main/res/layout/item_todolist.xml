@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="15dp"
-    android:layout_width="127.5dip"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:background="@drawable/beforeselect"
-    >
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_face1"
-        android:layout_width="82.5dip"
-        android:layout_height="82.5dip"
-        android:src="@drawable/bg_circle_5"
-        />
-    <TextView
-        android:id="@+id/todo_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:layout_marginTop="15dp"
-        android:textSize="18dp"
-        android:text="未知"
-        />
+<com.wajahatkarim3.easyflipview.EasyFlipView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/flipView"
+android:layout_width="127.5dip"
+android:layout_height="wrap_content"
+android:gravity="center"
+android:layout_marginLeft="10dp"
+android:layout_marginRight="10dp"
+app:autoFlipBack="true"
+app:autoFlipBackTime="5000"
+app:flipDuration="400"
+app:flipEnabled="true"
+app:flipOnTouch="false">
+<!-- Back Layout Goes Here -->
+<include layout="@layout/item_todo_flip_back" />
 
+<!-- Front Layout Goes Here -->
+<include layout="@layout/item_todo_flip_front" />
 
-</LinearLayout>
+</com.wajahatkarim3.easyflipview.EasyFlipView>
