@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.sy.mingding.Activity.CalAsynchronousActivity;
+import com.sy.mingding.Activity.CalendarActivity;
 import com.sy.mingding.Activity.ProjectManageActivity;
 import com.sy.mingding.Activity.SettingActivity;
 import com.sy.mingding.Adapter.ProjectListAdapter;
@@ -26,6 +28,7 @@ import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.Utils.BeanUtils.UserUtil;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -66,6 +69,9 @@ public class TodoFragment extends BaseFragment {
 
         //ToolBarSettings
         mTodoTopBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+            private Intent mIntent;
+
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -73,8 +79,14 @@ public class TodoFragment extends BaseFragment {
                     case R.id.action_edit_project:
 //                        Toast.makeText(mRootView.getContext(), "edit", Toast.LENGTH_SHORT).show();
 
-                        Intent intent=new Intent(mRootView.getContext(),ProjectManageActivity.class);
-                        startActivity(intent);
+                        mIntent = new Intent(mRootView.getContext(),ProjectManageActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case R.id.action_calendar:
+//                        Toast.makeText(mRootView.getContext(), "edit", Toast.LENGTH_SHORT).show();
+
+                        mIntent=new Intent(mRootView.getContext(),CalAsynchronousActivity.class);
+                        startActivity(mIntent);
                         break;
                 }
                 return false;
@@ -134,6 +146,7 @@ public class TodoFragment extends BaseFragment {
                     if (e == null) {
                         mData = object;
                         upTodoUI(mData);
+                        mProjectListAdapter.notifyDataSetChanged();
                         LogUtil.d("QUERY---", "--------ss" + object.toString());
                     } else {
                         LogUtil.d("QUERY---", "--------ee" + e.getErrorCode() + e.getMessage());

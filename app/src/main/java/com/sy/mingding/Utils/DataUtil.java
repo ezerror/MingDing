@@ -145,5 +145,29 @@ public class DataUtil {
         map.put("7", sunday);
         return map;
     }
+    public static Map<String,Date> getMonthData(int month) {
+       Map<String,Date> map = new HashMap();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.MONTH,month-1);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.DAY_OF_MONTH, 1);//设置为1号,当前日期既为本月第一天
+        Date first = c.getTime();
+
+        //获取当前月最后一天
+        c.set(Calendar.DAY_OF_MONTH,c.getActualMaximum(Calendar.DAY_OF_MONTH));
+        c.set(Calendar.HOUR_OF_DAY, 23);
+        c.set(Calendar.MINUTE, 59);
+        c.set(Calendar.SECOND, 59);
+        Date last = c.getTime();
+
+
+        LogUtil.d("DATAUTIL","getMonthData  "+month+"  "+first+"  " +last);
+        map.put("first", first);
+        map.put("last", last);
+        return map;
+    }
 
 }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">酩酊</string>
+
+    <string name="action_today">今天</string>
+    <string name="action_day_view">日视图</string>
+    <string name="action_three_day_view">3日视图</string>
+    <string name="action_week_view">周视图</string>
 </resources>

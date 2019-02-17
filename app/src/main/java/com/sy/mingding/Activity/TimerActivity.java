@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.sy.mingding.Bean.Timing;
-import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.BeanUtils.TimingUtil;
+import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.widget.CountdownView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,8 +32,10 @@ public class TimerActivity extends AppCompatActivity {
     private Button btnStop;
     public boolean isPause=false;
     public boolean isStop=true;
-    private int time = 0;
-    private int starttime=0;
+    private int time = 0;//表盘时间
+    private int timing =0;//准备倒计时的时间
+    private Date startTime;
+    private Date endTime;
     private Timer mTimer;
     private String mTodoId;
 
@@ -46,9 +49,7 @@ public class TimerActivity extends AppCompatActivity {
     private void init() {
         mTodoId = getIntent().getStringExtra("todo_id");
 
-        //TODO:待删除
-        TextView testtodoid=findViewById(R.id.testtodoid);
-        testtodoid.setText(mTodoId);
+
         //TODO:
         countdownView = findViewById(R.id.view_countdown);
         btnStart = findViewById(R.id.btn_start);
@@ -87,11 +88,14 @@ public class TimerActivity extends AppCompatActivity {
         });
     }
     public void startTimer(){
+        Calendar calendar= Calendar.getInstance();
+        startTime=calendar.getTime();
+        LogUtil.d("TimeActivity","startTime"+startTime);
         countdownView.setCountdownFlag(false);
         btnStart.setVisibility(View.INVISIBLE);
         btnPause.setVisibility(View.VISIBLE);
         isPause=false;
-        starttime=time;
+        timing =time;
         if(isStop) {
             mTimer = new Timer();
             mTimer.schedule(new TimerTask() {
@@ -108,11 +112,14 @@ public class TimerActivity extends AppCompatActivity {
                                     btnStart.setVisibility(View.VISIBLE);
                                     btnPause.setVisibility(View.INVISIBLE);
                                     countdownView.setCountdownFlag(true);
-                                    if(starttime!=0){
-                                        TimingUtil.addTiming(mTodoId,starttime);
+                                    if(timing !=0){
+                                        Calendar calendar= Calendar.getInstance();
+                                        endTime=calendar.getTime();
+                                        LogUtil.d("TimeActivity","endTime"+endTime);
+                                        TimingUtil.addTiming(mTodoId, timing,startTime,endTime);
                                     }
                                 } else {
-                                    time=time-60;
+                                    time--;
                                 }
                             }
                         }
@@ -124,7 +131,7 @@ public class TimerActivity extends AppCompatActivity {
         }
     }
     public  void stopTimer(){
-        starttime=0;
+        timing =0;
         time=0;
         countdownView.setCountdown(time);
         btnStart.setVisibility(View.VISIBLE);

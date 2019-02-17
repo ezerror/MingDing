@@ -39,6 +39,8 @@
         <activity android:name=".Activity.UserSettingActivity"/>
         <activity android:name=".Activity.ProjectManageActivity"/>
         <activity android:name=".Activity.TimerActivity"/>
+        <activity android:name=".Activity.CalAsynchronousActivity" />
+
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.sy.mingding.BmobContentProvider">

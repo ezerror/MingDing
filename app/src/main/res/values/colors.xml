@@ -4,11 +4,19 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#ff1d282c</color>
     <color name="gray">#e6e6e6</color>
+    <color name="black">#000</color>
     <color name="white">#fff</color>
-
+    <color name="light_gray_blue">#5D768A</color>
+    <color name="gray_blue">#4d6171</color>
     <color name="button_color">#6633b5e5</color>
-
-
-
     <color name="light_blue">#76a5af</color>
+
+
+
+
+
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
 </resources>

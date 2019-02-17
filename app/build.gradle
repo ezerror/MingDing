@@ -42,4 +42,5 @@ dependencies {
 
     implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.1.2'
+    implementation 'com.github.alamkanak:android-week-view:1.2.6'
 }
