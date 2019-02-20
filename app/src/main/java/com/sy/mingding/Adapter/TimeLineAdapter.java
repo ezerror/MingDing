@@ -13,7 +13,7 @@ import com.sy.mingding.Bean.Timing;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.TimeUtil;
 import com.sy.mingding.imple.Item;
-import com.sy.mingding.widget.BottomAddTimingDialog;
+import com.sy.mingding.Dialog.BottomAddTimingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,10 +104,16 @@ public class TimeLineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         @SuppressLint("SetTextI18n")
         public void setNormalData(Timing timing) {
-            mTvTimelineTitle.setText(timing.getTodo().getProject().getProjectName());
+            if(timing.getTodo()!=null){
+                mTvTimelineTitle.setText(timing.getTodo().getProject().getProjectName());
+                mTvTimelineContent.setText(timing.getTodo().getTodoName());
+            }else {
+                mTvTimelineTitle.setText("自由活动");
+                mTvTimelineContent.setText(timing.getTimingName());
+            }
             mTvTimelineDuration.setText(TimeUtil.getTimeFromInteger(timing.getTime()));
             mTvTimelineInterval.setText(TimeUtil.getTimeFromBmobDate(timing.getStartTime().getDate())+"~"+TimeUtil.getTimeFromBmobDate(timing.getEndTime().getDate()));
-            mTvTimelineContent.setText(timing.getTodo().getTodoName());
+
         }
 
         public void setAddTimingButton(final int position) {

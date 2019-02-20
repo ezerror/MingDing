@@ -195,6 +195,7 @@ public class TodoFragment extends BaseFragment {
     public void onResume() {
         ToolbarRefresh();
         mRootView.invalidate();
+        getProjectData();
         super.onResume();
     }
 

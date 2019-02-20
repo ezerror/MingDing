@@ -16,6 +16,8 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
+import static com.sy.mingding.Utils.Constants.HANDLER_REFRESH_TIMELINE;
+
 /**
  * @Author: ez
  * @Time: 2019/2/14 20:43
@@ -23,7 +25,7 @@ import cn.bmob.v3.listener.SaveListener;
  */
 public class TimingUtil {
 
-    public static void addTiming(final String todoid, final Integer time, Date start, Date end) {
+    public static void addTimingFromTodo(final String todoid, final Integer time, Date start, Date end) {
         final BmobDate startTime = new BmobDate(start);
         final BmobDate endTime = new BmobDate(end);
         final Timing timing = new Timing();
@@ -37,7 +39,8 @@ public class TimingUtil {
             @Override
             public void done(String s, BmobException e) {
                 if (e == null) {
-                    LogUtil.e("BMOB", "addTiming" + timing);
+                    LogUtil.e("BMOB", "addTimingFromTodo" + timing);
+                    BaseApplication.mHandler.sendEmptyMessage(HANDLER_REFRESH_TIMELINE);
                 } else {
                     LogUtil.e("BMOB", e.toString());
                 }
@@ -46,5 +49,26 @@ public class TimingUtil {
 
 
         TodoUtil.updateTodoSumTime(todoid, time);
+    }
+
+    public static void addTimingFromFree(String timingTitle , final Integer time, Date start, Date end) {
+        final BmobDate startTime = new BmobDate(start);
+        final BmobDate endTime = new BmobDate(end);
+        final Timing timing = new Timing();
+        timing.setTimingName(timingTitle);
+        timing.setTime(time);
+        timing.setStartTime(startTime);
+        timing.setEndTime(endTime);
+        timing.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if (e == null) {
+                    LogUtil.e("BMOB", "addTimingFromFree" + timing);
+                } else {
+                    LogUtil.e("BMOB", e.toString());
+                }
+            }
+        });
+
     }
 }

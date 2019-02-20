@@ -67,12 +67,19 @@ public class CalAsynchronousActivity extends CalendarActivity  {
                             long time = (calEndTime.getTimeInMillis()-calStartTime.getTimeInMillis())/60000;
 
                             Log.d("chazhi", "done: "+time);
-                            WeekViewEvent event = new WeekViewEvent(1, timing.getTodo().getTodoName()+getEventTitle(calStartTime,time), calStartTime, calEndTime);
+                            WeekViewEvent event = null;
+                            if(timing.getTodo()!=null){
+                                event = new WeekViewEvent(1, timing.getTodo().getTodoName()+getEventTitle(calStartTime,time), calStartTime, calEndTime);
+                            }
+                            else {
+                                event = new WeekViewEvent(1, timing.getTimingName()+getEventTitle(calStartTime,time), calStartTime, calEndTime);
+                            }
+
                             event.setColor(getResources().getColor(R.color.event_color_01));
                             events.add(event);
                         }
                     } else {
-                        LogUtil.e("BMOBUTIL", "shibai");
+                        LogUtil.e("BMOBUTIL", "失败");
                     }
                     getWeekView().notifyDatasetChanged();
                 }

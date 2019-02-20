@@ -107,7 +107,5 @@ public class MainViewActivity extends FragmentActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         MainContentAdapter mainContentAdapter =new MainContentAdapter(supportFragmentManager);
         mContentPager.setAdapter(mainContentAdapter);
-
-
     }
 }

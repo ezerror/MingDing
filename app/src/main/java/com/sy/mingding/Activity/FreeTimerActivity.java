@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.BeanUtils.TimingUtil;
@@ -16,16 +16,12 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-
 /**
  * @Author: ez
- * @Time: 2019/2/14 2:12
- * @Description: HomePage For CountdownView
+ * @Time: 2019/2/18 21:27
+ * @Description: 功能描述
  */
-
-public class TimerActivity extends AppCompatActivity {
-
+public class FreeTimerActivity extends AppCompatActivity {
     private CountdownView countdownView;
     private Button btnStart;
     private Button btnPause;
@@ -33,7 +29,6 @@ public class TimerActivity extends AppCompatActivity {
     public boolean isPause=false;
     public boolean isStop=true;
     private int time = 0;//表盘时间
-    private int timing =0;//准备倒计时的时间
     private Date startTime;
     private Date endTime;
     private Timer mTimer;
@@ -42,28 +37,20 @@ public class TimerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timing);
+        setContentView(R.layout.activity_free_timing);
         init();
+
     }
-
     private void init() {
-        mTodoId = getIntent().getStringExtra("todo_id");
-
 
         //TODO:
-        countdownView = findViewById(R.id.view_countdown);
+        countdownView = findViewById(R.id.free_countdown);
         btnStart = findViewById(R.id.btn_start);
         btnPause=findViewById(R.id.btn_pause);
         btnStop=findViewById(R.id.btn_stop);
-        // 设置倒计时时长
-        countdownView.setCountdown(time);
-        // 设置倒计时改变监听
-        countdownView.setOnCountdownListener(new CountdownView.OnCountdownListener() {
-            @Override
-            public void countdown(int time) {
-                TimerActivity.this.time = time*60;
-            }
-        });
+        countdownView.setDrawDialFlag(false);
+        // 设置时间
+        countdownView.setCountdown(0);
 
         // 开始倒计时监听
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -88,14 +75,12 @@ public class TimerActivity extends AppCompatActivity {
         });
     }
     public void startTimer(){
-        Calendar calendar= Calendar.getInstance();
-        startTime=calendar.getTime();
-        LogUtil.d("TimeActivity","startTime"+startTime);
-        countdownView.setCountdownFlag(false);
+        Calendar calendar = Calendar.getInstance();
+        startTime= calendar.getTime();
+        LogUtil.d("FreeTimerActivity","startTime"+startTime);
         btnStart.setVisibility(View.INVISIBLE);
         btnPause.setVisibility(View.VISIBLE);
         isPause=false;
-        timing =time;
         if(isStop) {
             mTimer = new Timer();
             mTimer.schedule(new TimerTask() {
@@ -106,21 +91,7 @@ public class TimerActivity extends AppCompatActivity {
                         public void run() {
                             if (!isPause) {
                                 countdownView.setCountdown(time);
-                                if (time == 0) {
-                                    mTimer.cancel();
-                                    isStop = true;
-                                    btnStart.setVisibility(View.VISIBLE);
-                                    btnPause.setVisibility(View.INVISIBLE);
-                                    countdownView.setCountdownFlag(true);
-                                    if(timing !=0){
-                                        Calendar calendar= Calendar.getInstance();
-                                        endTime=calendar.getTime();
-                                        LogUtil.d("TimeActivity","endTime"+endTime);
-                                        TimingUtil.addTiming(mTodoId, timing,startTime,endTime);
-                                    }
-                                } else {
-                                    time--;
-                                }
+                                time=time+1000;
                             }
                         }
                     });
@@ -131,14 +102,19 @@ public class TimerActivity extends AppCompatActivity {
         }
     }
     public  void stopTimer(){
-        timing =0;
-        time=0;
-        countdownView.setCountdown(time);
+        countdownView.setCountdown(0);
         btnStart.setVisibility(View.VISIBLE);
         btnPause.setVisibility(View.INVISIBLE);
         isStop=true;
         countdownView.setCountdownFlag(true);
         mTimer.cancel();
+
+        Toast.makeText(this, "放进去了", Toast.LENGTH_SHORT).show();
+        Calendar calendar = Calendar.getInstance();
+        endTime=calendar.getTime();
+        TimingUtil.addTimingFromFree("TEST",time,startTime,endTime);
+
+        time=0;
     }
 
     public void pauseTimer() {

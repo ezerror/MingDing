@@ -2,17 +2,15 @@ package com.sy.mingding.Adapter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sy.mingding.Activity.TimerActivity;
+import com.sy.mingding.Activity.TodoTimerActivity;
 import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.R;
 import com.sy.mingding.imple.Item;
@@ -102,7 +100,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
                         @Override
                         public void onItemClick(int index) {
                             Toast.makeText(itemView.getContext(),"GO --"+mData.get(index).getTodoName(),Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(itemView.getRootView().getContext(),TimerActivity.class);
+                            Intent intent=new Intent(itemView.getRootView().getContext(),TodoTimerActivity.class);
                             intent.putExtra("todo_id", mData.get(position).getObjectId());
                             itemView.getRootView().getContext().startActivity(intent);
                         }

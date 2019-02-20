@@ -5,10 +5,11 @@
     <color name="colorAccent">#ff1d282c</color>
     <color name="gray">#e6e6e6</color>
     <color name="black">#000</color>
-    <color name="white">#fff</color>
+    <color name="white">#ffffff</color>
     <color name="light_gray_blue">#5D768A</color>
     <color name="gray_blue">#4d6171</color>
     <color name="button_color">#6633b5e5</color>
+    <color name="timing_bg">#234f66</color>
     <color name="light_blue">#76a5af</color>
 
 

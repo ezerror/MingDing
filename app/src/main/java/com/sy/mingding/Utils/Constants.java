@@ -23,4 +23,9 @@ public class Constants {
     public final static int HANDLER_ADD_TODO =101;
     public final static int HANDLER_CLOSE_ADD_PROJECT_WAITING_DIALOG =1001;
 
+
+    public final static int HANDLER_REFRESH_TIMELINE =200;
+
+
+
 }

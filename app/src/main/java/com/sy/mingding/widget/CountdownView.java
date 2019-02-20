@@ -1,5 +1,6 @@
 package com.sy.mingding.widget;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.sy.mingding.R;
 
 import java.util.Locale;
 
@@ -26,6 +29,8 @@ public class CountdownView extends View {
     private int height;
     //是否可以滑动改变
     boolean isTouch =true;
+    //是否绘制表盘
+    boolean isDrawDial=true;
     // 刻度盘半径
     private int dialRadius;
     // 小时刻度高
@@ -63,6 +68,9 @@ public class CountdownView extends View {
 
     public CountdownView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.CountdownView);
+        isDrawDial = typedArray.getBoolean(R.styleable.CountdownView_isDrawDial,true);
+        typedArray.recycle();//释放资源
         init();
     }
 
@@ -70,14 +78,14 @@ public class CountdownView extends View {
         // 刻度盘画笔
         dialPaint = new Paint();
         dialPaint.setAntiAlias(true);
-        dialPaint.setColor(Color.parseColor("#94C5FF"));
+        dialPaint.setColor(Color.parseColor("#FFFFFF"));
         dialPaint.setStyle(Paint.Style.STROKE);
         dialPaint.setStrokeCap(Paint.Cap.ROUND);
 
         // 时间画笔
         timePaint = new Paint();
         timePaint.setAntiAlias(true);
-        timePaint.setColor(Color.parseColor("#94C5FF"));
+        timePaint.setColor(Color.parseColor("#FFFFFF"));
         timePaint.setTextSize(sp2px(33));
         timePaint.setStyle(Paint.Style.STROKE);
     }
@@ -86,7 +94,14 @@ public class CountdownView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         // 控件宽、高
-        width = height = Math.min(h, w);
+        if(isDrawDial){
+            width = height = Math.min(h, w);
+        }
+        else {
+            width=w;
+            height=h;
+        }
+
         // 刻度盘半径
         dialRadius = (int) (width / 2 - dp2px(10));
     }
@@ -95,9 +110,11 @@ public class CountdownView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 绘制刻度盘
-        drawDial(canvas);
-        // 绘制定时进度条
-        drawArc(canvas);
+        if(isDrawDial) {
+            drawDial(canvas);
+            // 绘制定时进度条
+            drawArc(canvas);
+        }
         // 绘制时间
         drawTime(canvas);
     }
@@ -176,7 +193,12 @@ public class CountdownView extends View {
      * @param canvas 画布
      */
     private void drawTime(Canvas canvas) {
-        canvas.restore();
+        if(isDrawDial){
+            canvas.restore();
+        }
+        else {
+            canvas.translate(getWidth() / 2, getHeight() / 2);
+        }
         String timeText = String.format(Locale.CHINA, "%02d", minute) + " : "+String.format(Locale.CHINA, "%02d", second);
         // 获取时间的宽高
         float timeWidth = timePaint.measureText(timeText);
@@ -341,6 +363,11 @@ public class CountdownView extends View {
      */
     public void setCountdownFlag(boolean flag) {
         this.isTouch =flag;
+    }
+
+    public void setDrawDialFlag(boolean flag){
+        isDrawDial=flag;
+        setCountdownFlag(false);
     }
 
     /**

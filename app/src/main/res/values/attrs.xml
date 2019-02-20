@@ -2,12 +2,11 @@
 <resources>
     <!--AutoFillEmailEditText-->
     <declare-styleable name="AutoFillEmailEditText">
-        <attr name="AutoFillEmailEditText_domains" format="string"/>
-        <attr name="AutoFillEmailEditText_default_drop_down_key_color" format="color"/>
-        <attr name="AutoFillEmailEditText_default_drop_down_bg" format="reference"/>
-        <attr name="AutoFillEmailEditText_default_drop_down_divider" format="boolean"/>
+        <attr name="AutoFillEmailEditText_domains" format="string" />
+        <attr name="AutoFillEmailEditText_default_drop_down_key_color" format="color" />
+        <attr name="AutoFillEmailEditText_default_drop_down_bg" format="reference" />
+        <attr name="AutoFillEmailEditText_default_drop_down_divider" format="boolean" />
     </declare-styleable>
-
 
 
     <declare-styleable name="RoundImageView">
@@ -18,6 +17,11 @@
         <attr name="top_right" />
         <attr name="bottom_left" />
         <attr name="bottom_right" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CountdownView">
+        <attr name="isDrawDial" format="boolean" />
     </declare-styleable>
 
     <attr name="borderRadius" format="dimension" />

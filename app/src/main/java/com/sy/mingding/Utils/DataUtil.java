@@ -169,5 +169,24 @@ public class DataUtil {
         map.put("last", last);
         return map;
     }
+    public static Map<String,Date> getTodayDate() {
+        Map<String,Date> map = new HashMap();
+        Calendar cal=Calendar.getInstance();
+        cal.getTime();
 
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        Date first = cal.getTime();
+
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        Date last = cal.getTime();
+        LogUtil.d("DATAUTIL","getTodayData   "+first+"  " +last);
+        map.put("first", first);
+        map.put("last", last);
+        return map;
+
+    }
 }

@@ -1,4 +1,4 @@
-package com.sy.mingding.widget;
+package com.sy.mingding.Dialog;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -7,14 +7,14 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.sy.mingding.Activity.TimerActivity;
+import com.sy.mingding.Activity.FreeTimerActivity;
+import com.sy.mingding.Activity.TodoTimerActivity;
 import com.sy.mingding.R;
+import com.sy.mingding.widget.BottomDialogBase;
 
 /**
  * @Author: ez
@@ -77,8 +77,13 @@ public class BottomAddTimingDialog extends BottomDialogBase implements View.OnCl
     }
 
     private void Go(int selectedState) {
-        if (selectedState==1){
-            mIntent = new Intent(getContext(),TimerActivity.class);
+        if (selectedState==0){
+            mIntent = new Intent(getContext(),TodoTimerActivity.class);
+            getContext().startActivity(mIntent);
+            dismiss();
+        }
+        if(selectedState==1){
+            mIntent = new Intent(getContext(),FreeTimerActivity.class);
             getContext().startActivity(mIntent);
             dismiss();
         }
