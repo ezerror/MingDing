@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.sy.mingding.Interface.ConfirmDialogInterface;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.BeanUtils.TimingUtil;
+import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.widget.CountdownView;
 
@@ -102,24 +104,38 @@ public class FreeTimerActivity extends AppCompatActivity {
         }
     }
     public  void stopTimer(){
-        countdownView.setCountdown(0);
-        btnStart.setVisibility(View.VISIBLE);
-        btnPause.setVisibility(View.INVISIBLE);
-        isStop=true;
-        countdownView.setCountdownFlag(true);
-        mTimer.cancel();
+        if(time!=0){
+            countdownView.setCountdown(0);
+            btnStart.setVisibility(View.VISIBLE);
+            btnPause.setVisibility(View.INVISIBLE);
+            isStop=true;
+            countdownView.setCountdownFlag(true);
+            mTimer.cancel();
+            DialogUtil.showNormalInputDialog(getWindow().getDecorView(), "请输入该TIMING名称", new ConfirmDialogInterface() {
+                @Override
+                public void onConfirmClickListener(String content) {
+                    Toast.makeText(getBaseContext(), "放进去了", Toast.LENGTH_SHORT).show();
+                    Calendar calendar = Calendar.getInstance();
+                    endTime=calendar.getTime();
+                    TimingUtil.addTimingFromFree(content,time,startTime,endTime);
+                    time=0;
+                }
 
-        Toast.makeText(this, "放进去了", Toast.LENGTH_SHORT).show();
-        Calendar calendar = Calendar.getInstance();
-        endTime=calendar.getTime();
-        TimingUtil.addTimingFromFree("TEST",time,startTime,endTime);
+                @Override
+                public void onCancelClickListener(String content) {
 
-        time=0;
+                }
+            });
+        }
+
+
     }
 
     public void pauseTimer() {
-        isPause=true;
-        btnStart.setVisibility(View.VISIBLE);
-        btnPause.setVisibility(View.INVISIBLE);
+        if(time!=0){
+            isPause=true;
+            btnStart.setVisibility(View.VISIBLE);
+            btnPause.setVisibility(View.INVISIBLE);
+        }
     }
 }

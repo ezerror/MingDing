@@ -21,20 +21,8 @@ public class BaseApplication extends Application {
         //初始化Bmob
         Bmob.initialize(this,"67ad7af91544222fc4c4bab406ebe024");
 
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                for (int i = 0; i < 15; i++) {
-//                    try {
-//                        sleep(500);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    mHandler.sendEmptyMessage(i);
-//                }
-//            }
-//        }.start();
+
+
     }
 
 

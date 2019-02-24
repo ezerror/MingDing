@@ -1,38 +1,28 @@
 package com.sy.mingding.Adapter;
 
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.Callback.TodoItemTouchCallback;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.BeanUtils.ProjectUtil;
-import com.sy.mingding.Utils.BeanUtils.TodoUtil;
-import com.sy.mingding.Utils.Constants;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.imple.Item;
-import com.sy.mingding.imple.ItemTouchMoveListener;
-import com.sy.mingding.imple.RecycViewOnItemClicked;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;

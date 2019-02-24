@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.sy.mingding.Activity.CalAsynchronousActivity;
-import com.sy.mingding.Activity.CalendarActivity;
 import com.sy.mingding.Activity.ProjectManageActivity;
 import com.sy.mingding.Activity.SettingActivity;
 import com.sy.mingding.Adapter.ProjectListAdapter;
@@ -22,13 +21,10 @@ import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.Constants;
-import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.Utils.BeanUtils.UserUtil;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;

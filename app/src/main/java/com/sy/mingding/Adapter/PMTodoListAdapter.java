@@ -1,26 +1,18 @@
 package com.sy.mingding.Adapter;
 
 import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sy.mingding.Base.BaseApplication;
-import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.BeanUtils.TodoUtil;
-import com.sy.mingding.Utils.Constants;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.imple.Item;
 import com.sy.mingding.imple.ItemTouchMoveListener;
@@ -28,7 +20,6 @@ import com.sy.mingding.imple.ItemTouchMoveListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class PMTodoListAdapter extends RecyclerView.Adapter<PMTodoListAdapter.ViewHolder> implements ItemTouchMoveListener {
 

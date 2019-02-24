@@ -3,20 +3,15 @@ package com.sy.mingding.Utils.BeanUtils;
 import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.Timing;
 import com.sy.mingding.Bean.Todo;
-import com.sy.mingding.Utils.Constants;
 import com.sy.mingding.Utils.LogUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
-import static com.sy.mingding.Utils.Constants.HANDLER_REFRESH_TIMELINE;
+import static com.sy.mingding.Constants.Constants.HANDLER_REFRESH_TIMELINE;
 
 /**
  * @Author: ez
@@ -35,6 +30,7 @@ public class TimingUtil {
         timing.setTodo(todo);
         timing.setStartTime(startTime);
         timing.setEndTime(endTime);
+        timing.setUser(UserUtil.get_user());
         timing.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
@@ -59,6 +55,7 @@ public class TimingUtil {
         timing.setTime(time);
         timing.setStartTime(startTime);
         timing.setEndTime(endTime);
+        timing.setUser(UserUtil.get_user());
         timing.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {

@@ -19,6 +19,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.sy.mingding.Activity.CalAsynchronousActivity;
+import com.sy.mingding.Activity.MomentAddActivity;
 import com.sy.mingding.Activity.ProjectManageActivity;
 import com.sy.mingding.Adapter.TimeLineAdapter;
 import com.sy.mingding.Base.BaseApplication;
@@ -26,7 +27,8 @@ import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Bean.Timing;
 import com.sy.mingding.Dialog.BottomAddTimingDialog;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.DataUtil;
 import com.sy.mingding.Utils.LogUtil;
 
@@ -51,11 +53,12 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
     private RecyclerView mRvTimeLine;
     private LinearLayout mLyOpenTiming;
     private Intent mIntent;
-    private LinearLayout mMLyOpenTodo;
-    private LinearLayout mMLyOpenCanlendar;
+    private LinearLayout mLyOpenTodo;
+    private LinearLayout mLyOpenCanlendar;
     private PieChart mContributionPiechart;
     final Map<String,Integer> pieChartMap = new HashMap();
-    final Map<String,Float> pieChartMapData = new HashMap();
+    private LinearLayout mLyOpenMomentAdd;
+
     @Override
     protected View onSubViewLoaded(LayoutInflater layoutInflater, ViewGroup container) {
         mRootView = layoutInflater.inflate(R.layout.fragment_statistic,container,false);
@@ -118,7 +121,7 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
         timingStatisticQuery.sum(new String[]{"time"});
         timingStatisticQuery.setHasGroupCount(true);
         timingStatisticQuery.include("todo");
-
+        timingStatisticQuery.addWhereEqualTo("user",UserUtil.get_user());
         //获取今日
         timingStatisticQuery.addWhereGreaterThanOrEqualTo("startTime", new BmobDate(DataUtil.getTodayDate().get("first")));
         timingStatisticQuery.addWhereLessThanOrEqualTo("endTime", new BmobDate(DataUtil.getTodayDate().get("last")));
@@ -177,16 +180,19 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
 
     private void initEvent() {
         mLyOpenTiming.setOnClickListener(this);
-        mMLyOpenTodo.setOnClickListener(this);
-        mMLyOpenCanlendar.setOnClickListener(this);
+        mLyOpenTodo.setOnClickListener(this);
+        mLyOpenCanlendar.setOnClickListener(this);
+        mLyOpenMomentAdd.setOnClickListener(this);
     }
 
     private void initView(LayoutInflater layoutInflater, ViewGroup container) {
 
         mRvTimeLine = mRootView.findViewById(R.id.rv_timeline);
         mLyOpenTiming = mRootView.findViewById(R.id.ll_op_timing);
-        mMLyOpenTodo = mRootView.findViewById(R.id.ll_op_todo);
-        mMLyOpenCanlendar = mRootView.findViewById(R.id.ll_op_calendar);
+        mLyOpenTodo = mRootView.findViewById(R.id.ll_op_todo);
+        mLyOpenCanlendar = mRootView.findViewById(R.id.ll_op_calendar);
+        mLyOpenMomentAdd = mRootView.findViewById(R.id.ll_op_moment);
+
         mContributionPiechart = mRootView.findViewById(R.id.contribution_piechart);
     }
     private void initData() {
@@ -214,6 +220,7 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
         TimingBmobQuery.order("-createdAt");
         TimingBmobQuery.addWhereGreaterThanOrEqualTo("startTime", new BmobDate(DataUtil.getTodayDate().get("first")));
         TimingBmobQuery.addWhereLessThanOrEqualTo("endTime", new BmobDate(DataUtil.getTodayDate().get("last")));
+        TimingBmobQuery.addWhereEqualTo("user",UserUtil.get_user());
         TimingBmobQuery.findObjects(new FindListener<Timing>() {
             @Override
             public void done(List<Timing> object, BmobException e) {
@@ -244,6 +251,10 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.ll_op_calendar:
                 mIntent = new Intent(mRootView.getContext(),CalAsynchronousActivity.class);
+                startActivity(mIntent);
+                break;
+            case R.id.ll_op_moment:
+                mIntent = new Intent(mRootView.getContext(),MomentAddActivity.class);
                 startActivity(mIntent);
                 break;
             default:break;

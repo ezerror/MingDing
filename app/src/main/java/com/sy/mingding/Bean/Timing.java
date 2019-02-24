@@ -14,6 +14,7 @@ public class Timing extends BmobObject {
     private BmobDate startTime;
     private BmobDate endTime;
     private String timingName;
+    private User user;
 
     public Todo getTodo() {
         return todo;
@@ -53,5 +54,13 @@ public class Timing extends BmobObject {
 
     public void setTimingName(String timingName) {
         this.timingName = timingName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

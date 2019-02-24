@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetLeft="10dp"
+        app:contentInsetRight="10dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+
+        <TextView
+            android:id="@+id/tv_addmoment_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:id="@+id/tv_addmoment_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="发布"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+    </android.support.v7.widget.Toolbar>
+    <EditText
+        android:id="@+id/et_addmoment_message"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:padding="5dp"
+        android:minLines="5"
+        android:gravity="top"
+        android:background="@null"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_release_moment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

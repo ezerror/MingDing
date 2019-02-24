@@ -1,7 +1,6 @@
 package com.sy.mingding.Activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +19,7 @@ import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 

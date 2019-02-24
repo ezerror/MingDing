@@ -1,17 +1,13 @@
 package com.sy.mingding.Utils.BeanUtils;
 
-import android.app.Application;
 import android.content.Context;
-import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.Todo;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 

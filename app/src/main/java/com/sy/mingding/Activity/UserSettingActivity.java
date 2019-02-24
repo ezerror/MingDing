@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.ContentUriUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.Utils.BeanUtils.UserUtil;

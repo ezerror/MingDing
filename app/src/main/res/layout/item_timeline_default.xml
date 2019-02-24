@@ -54,7 +54,7 @@
                 android:layout_width="150dp"
                 android:layout_height="260dp"
                 android:padding="10dp"
-                android:background="@drawable/timeline_bg_2">
+                android:background="@mipmap/timeline_bg_2">
 
                 <TextView
                     android:id="@+id/tv_timeline_title"

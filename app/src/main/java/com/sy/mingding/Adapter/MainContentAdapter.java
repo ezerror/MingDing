@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.FragmentCreator;
 
 public class MainContentAdapter extends FragmentPagerAdapter {

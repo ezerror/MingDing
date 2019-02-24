@@ -1,33 +1,19 @@
 package com.sy.mingding.Utils.BeanUtils;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import com.sy.mingding.Adapter.PMTodoListAdapter;
 import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.Bean.User;
-import com.sy.mingding.Callback.TodoItemTouchCallback;
-import com.sy.mingding.R;
-import com.sy.mingding.Utils.Constants;
+import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 

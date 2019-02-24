@@ -1,7 +1,8 @@
 package com.sy.mingding.Utils;
 
 import com.sy.mingding.Base.BaseFragment;
-import com.sy.mingding.Fragments.SettingsFragment;
+import com.sy.mingding.Constants.Constants;
+import com.sy.mingding.Fragments.MomentFragment;
 import com.sy.mingding.Fragments.StatisticFragment;
 import com.sy.mingding.Fragments.TodoFragment;
 
@@ -26,7 +27,7 @@ public class FragmentCreator {
                 baseFragment =new StatisticFragment();
                 break;
             case Constants.INDEX_SETTINGS:
-                baseFragment =new SettingsFragment();
+                baseFragment =new MomentFragment();
                 break;
         }
         sCache.put(index,baseFragment);

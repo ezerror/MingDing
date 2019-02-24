@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.sy.mingding"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -21,6 +21,17 @@ android {
     }
 }
 
+//如果引用的第三方库的支持库版本低于（或者不一致）app build.gradle中的支持库版本，可能会出现如下问题：
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '28.0.0'
+            }
+        }
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -50,4 +61,8 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
+    implementation 'top.zibin:Luban:1.1.8'
+    implementation 'com.foamtrace:photopicker:1.0'
+    implementation 'com.bm.photoview:library:1.4.1'
 }
