@@ -1,4 +1,4 @@
-package com.sy.mingding.Utils.BeanUtils;
+package com.sy.mingding.Model;
 
 import com.sy.mingding.Base.BaseApplication;
 import com.sy.mingding.Bean.Timing;
@@ -18,7 +18,7 @@ import static com.sy.mingding.Constants.Constants.HANDLER_REFRESH_TIMELINE;
  * @Time: 2019/2/14 20:43
  * @Description: Timing表操作
  */
-public class TimingUtil {
+public class TimingModel {
 
     public static void addTimingFromTodo(final String todoid, final Integer time, Date start, Date end) {
         final BmobDate startTime = new BmobDate(start);
@@ -30,7 +30,7 @@ public class TimingUtil {
         timing.setTodo(todo);
         timing.setStartTime(startTime);
         timing.setEndTime(endTime);
-        timing.setUser(UserUtil.get_user());
+        timing.setUser(UserModel.getCurrentUser());
         timing.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
@@ -44,7 +44,7 @@ public class TimingUtil {
         });
 
 
-        TodoUtil.updateTodoSumTime(todoid, time);
+        TodoModel.updateTodoSumTime(todoid, time);
     }
 
     public static void addTimingFromFree(String timingTitle , final Integer time, Date start, Date end) {
@@ -55,7 +55,7 @@ public class TimingUtil {
         timing.setTime(time);
         timing.setStartTime(startTime);
         timing.setEndTime(endTime);
-        timing.setUser(UserUtil.get_user());
+        timing.setUser(UserModel.getCurrentUser());
         timing.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {

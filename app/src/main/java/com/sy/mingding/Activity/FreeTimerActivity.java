@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.sy.mingding.Interface.ConfirmDialogInterface;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.TimingUtil;
+import com.sy.mingding.Model.TimingModel;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.widget.CountdownView;
@@ -117,7 +117,7 @@ public class FreeTimerActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "放进去了", Toast.LENGTH_SHORT).show();
                     Calendar calendar = Calendar.getInstance();
                     endTime=calendar.getTime();
-                    TimingUtil.addTimingFromFree(content,time,startTime,endTime);
+                    TimingModel.addTimingFromFree(content,time,startTime,endTime);
                     time=0;
                 }
 

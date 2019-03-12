@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.squareup.okio:okio:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    //bmobIm
+    implementation 'cn.bmob.android:bmob-im:2.1.1@aar'
     //fresco
     implementation 'com.facebook.fresco:fresco:1.11.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
@@ -65,4 +67,9 @@ dependencies {
     implementation 'top.zibin:Luban:1.1.8'
     implementation 'com.foamtrace:photopicker:1.0'
     implementation 'com.bm.photoview:library:1.4.1'
+
+
+
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.orhanobut:logger:1.4'
 }

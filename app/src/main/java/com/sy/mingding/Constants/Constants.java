@@ -1,14 +1,20 @@
 package com.sy.mingding.Constants;
 
 public class Constants {
+
+    public final static String APP_NAME ="酩酊";
+
+
     //TODO页面--INDEX
-    public final static int INDEX_TODO =0;
+    public final static int INDEX_CHAT =0;
+    //TODO页面--INDEX
+    public final static int INDEX_TODO =1;
     //STATISTIC页面--INDEX
-    public final static int INDEX_STATISTIC =1;
+    public final static int INDEX_STATISTIC =2;
     //SETTINGS页面--INDEX
-    public final static int INDEX_SETTINGS =2;
+    public final static int INDEX_SETTINGS =3;
     //主页面-页面个数
-    public final static int PAGE_COUNT=3;
+    public final static int PAGE_COUNT=4;
 
     //请求--打开相册
     public final static int REQUEST_GALLERY =1;

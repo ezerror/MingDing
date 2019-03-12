@@ -1,4 +1,4 @@
-package com.sy.mingding.Utils.BeanUtils;
+package com.sy.mingding.Model;
 
 import com.sy.mingding.Bean.Moment;
 import com.sy.mingding.Utils.LogUtil;
@@ -16,11 +16,11 @@ import cn.bmob.v3.listener.UploadBatchListener;
  * @Time: 2019/2/22 15:40
  * @Description: 功能描述
  */
-public class MomentUtil {
+public class MomentModel {
     public static void addMomentItem(ArrayList<String> data, String message){
         final Moment mt=new Moment();
         mt.setText(message);
-        mt.setUser(UserUtil.get_user());
+        mt.setUser(UserModel.getCurrentUser());
         if (data.size() != 0){
             final String[] array = new String[data.size()];
             for (int i = 0; i < data.size(); i++) {

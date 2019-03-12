@@ -1,13 +1,11 @@
 package com.sy.mingding.Activity;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekViewEvent;
-import com.sy.mingding.Bean.Event;
 import com.sy.mingding.Bean.Timing;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.UserModel;
 import com.sy.mingding.Utils.LogUtil;
 
 import java.text.ParseException;
@@ -42,7 +40,7 @@ public class CalAsynchronousActivity extends CalendarActivity  {
         if (!calledNetwork) {
             BmobQuery<Timing> TimingBmobQuery = new BmobQuery<>();
             TimingBmobQuery.include("todo");
-            TimingBmobQuery.addWhereEqualTo("user",UserUtil.get_user());
+            TimingBmobQuery.addWhereEqualTo("user",UserModel.getCurrentUser());
             TimingBmobQuery.findObjects(new FindListener<Timing>() {
                 public void done(List<Timing> list, BmobException e) {
                     if (e == null) {

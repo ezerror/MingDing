@@ -16,8 +16,8 @@ import android.widget.Toast;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.Todo;
 import com.sy.mingding.Callback.TodoItemTouchCallback;
+import com.sy.mingding.Model.ProjectModel;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.ProjectUtil;
 import com.sy.mingding.Utils.DialogUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.imple.Item;
@@ -180,7 +180,7 @@ public class PMProjectListAdapter extends RecyclerView.Adapter<PMProjectListAdap
                         @Override
                         public void onItemClick(int index) {
                             Toast.makeText(itemView.getContext(),"PRoject删除"+index,Toast.LENGTH_SHORT).show();
-                            ProjectUtil.deleteProjectFromSql(mData.get(index),itemView.getRootView().getContext());
+                            ProjectModel.deleteProjectFromSql(mData.get(index),itemView.getRootView().getContext());
                             mData.remove(index);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(0,getItemCount());

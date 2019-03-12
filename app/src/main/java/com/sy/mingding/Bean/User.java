@@ -11,6 +11,8 @@ public class User extends BmobUser {
     //这个BmobFile是特有的，我们可以用来上传我们的图片(头像资源)
     private BmobFile icon;
     private String nickname;
+    private String avatar;
+
 
     public BmobFile getIcon() {
         return icon;
@@ -27,6 +29,16 @@ public class User extends BmobUser {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
 
 
 }

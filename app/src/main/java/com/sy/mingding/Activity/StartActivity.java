@@ -51,7 +51,7 @@ public class StartActivity extends FragmentActivity {
 
         //判断是否已经登录
         if (BmobUser.isLogin()) {
-            Intent intent =new Intent(StartActivity.this,MainViewActivity.class);
+            Intent intent =new Intent(StartActivity.this,MainActivity.class);
             startActivity(intent);
             finish();
         }

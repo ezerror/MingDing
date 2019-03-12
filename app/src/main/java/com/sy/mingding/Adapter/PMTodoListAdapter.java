@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sy.mingding.Bean.Todo;
+import com.sy.mingding.Model.TodoModel;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.TodoUtil;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.imple.Item;
 import com.sy.mingding.imple.ItemTouchMoveListener;
@@ -125,7 +125,7 @@ public class PMTodoListAdapter extends RecyclerView.Adapter<PMTodoListAdapter.Vi
                             Toast.makeText(itemView.getContext(),"嘻嘻嘻"+index,Toast.LENGTH_SHORT).show();
                             //获取id并删除,数据库删除
                             String id=mData.get(position).getObjectId();
-                            TodoUtil.deleteTodoFromSql(id,itemView.getContext());
+                            TodoModel.deleteTodoFromSql(id,itemView.getContext());
                             //本地删除
                             mData.remove(index);
                             notifyItemRemoved(position);

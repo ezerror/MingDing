@@ -2,6 +2,7 @@ package com.sy.mingding.Utils;
 
 import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Constants.Constants;
+import com.sy.mingding.Fragments.ChatFragment;
 import com.sy.mingding.Fragments.MomentFragment;
 import com.sy.mingding.Fragments.StatisticFragment;
 import com.sy.mingding.Fragments.TodoFragment;
@@ -20,6 +21,9 @@ public class FragmentCreator {
             return baseFragment;
         }
         switch (index){
+            case Constants.INDEX_CHAT:
+                baseFragment =new ChatFragment();
+                break;
             case Constants.INDEX_TODO:
                 baseFragment =new TodoFragment();
                 break;

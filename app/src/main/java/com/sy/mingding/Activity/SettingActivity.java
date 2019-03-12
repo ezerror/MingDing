@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.ActivityManager;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.UserModel;
 
 public class SettingActivity extends Activity {
 
@@ -64,7 +64,7 @@ public class SettingActivity extends Activity {
 
     private void refresh() {
         //更新
-        User user =UserUtil.get_user();
+        User user =UserModel.getCurrentUser();
         mUsername.setText(user.getNickname());
         mTipLogin.setVisibility(View.INVISIBLE);
         if(user.getIcon()!=null){

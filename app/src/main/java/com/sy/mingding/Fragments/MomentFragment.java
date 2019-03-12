@@ -1,25 +1,20 @@
 package com.sy.mingding.Fragments;
 
 import android.app.ActivityOptions;
-import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import com.sy.mingding.Activity.ImagePreviewActivity;
-import com.sy.mingding.Activity.MainViewActivity;
 import com.sy.mingding.Adapter.MomentAdapter;
 import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Bean.Moment;
-import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.Constants.P;
 import com.sy.mingding.Interface.OnItemPictureClickListener;

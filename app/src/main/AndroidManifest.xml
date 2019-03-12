@@ -4,18 +4,28 @@
 
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <!-- 获取wifi网络状态的信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <!-- 获取sd卡写的权限，用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 监听网络的变化 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 设备休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--摄像头-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--录音-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--通知震动-->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 
     <application
@@ -36,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.SettingActivity" />
-        <activity android:name=".Activity.MainViewActivity" />
+        <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.UserSettingActivity" />
         <activity android:name=".Activity.ProjectManageActivity" />
@@ -45,6 +55,8 @@
         <activity android:name=".Activity.FreeTimerActivity" />
         <activity android:name=".Activity.MomentAddActivity"/>
         <activity android:name=".Activity.ImagePreviewActivity"/>
+        <activity android:name=".Activity.SearchUserActivity"/>
+        <activity android:name=".Activity.UserInfoActivity"/>
         <activity
             android:name="com.foamtrace.photopicker.PhotoPickerActivity"
             android:theme="@style/PhotoPickerTheme"
@@ -57,6 +69,28 @@
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.sy.mingding.BmobContentProvider"></provider>
 
+        <!--bmob IM 所需-->
+        <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.action.RECONNECT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="cn.bmob.newim.core.service.BmobIMService"
+            android:process=":bmobcore" />
+        <service
+            android:name="cn.bmob.newim.core.service.NotifyService"
+            android:process=":bmobcore" />
+        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+        <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
+        <!-- 设置bmob appkey -->
+        <meta-data
+            android:name="Bmob_APP_KEY"
+            android:value="67ad7af91544222fc4c4bab406ebe024" />
+        <!-- bmobim end -->
 
     </application>
 

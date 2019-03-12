@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.sy.mingding.Adapter.ReleaseMsgAdapter;
 import com.sy.mingding.Interface.ImagePressInterface;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.MomentUtil;
+import com.sy.mingding.Model.MomentModel;
 import com.sy.mingding.Utils.LogUtil;
 
 import java.io.File;
@@ -137,7 +137,7 @@ public class MomentAddActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.tv_addmoment_release:
-                MomentUtil.addMomentItem(mData,etMesssage.getText().toString());
+                MomentModel.addMomentItem(mData,etMesssage.getText().toString());
                 finish();
                 break;
 

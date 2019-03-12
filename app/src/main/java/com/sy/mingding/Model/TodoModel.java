@@ -1,4 +1,4 @@
-package com.sy.mingding.Utils.BeanUtils;
+package com.sy.mingding.Model;
 
 import android.content.Context;
 import android.view.View;
@@ -17,7 +17,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class TodoUtil {
+public class TodoModel {
 
     private static List<Todo> result;
 
@@ -32,9 +32,9 @@ public class TodoUtil {
                     if (context != null) {
                         DialogUtil.closeWaitingDialog();
                     }
-                    LogUtil.d("TodoUtil---->:deleteTodoFromSql","成功删除Todo id:"+id);
+                    LogUtil.d("TodoModel---->:deleteTodoFromSql","成功删除Todo id:"+id);
                 }else{
-                    LogUtil.d("TodoUtil---->:deleteTodoFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
+                    LogUtil.d("TodoModel---->:deleteTodoFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
                 }
             }
         });
@@ -46,9 +46,9 @@ public class TodoUtil {
             @Override
             public void done(BmobException e) {
                 if(e==null){
-                    LogUtil.d("TodoUtil---->:deleteTodoFromSql","成功删除Todo id:"+id);
+                    LogUtil.d("TodoModel---->:deleteTodoFromSql","成功删除Todo id:"+id);
                 }else{
-                    LogUtil.d("TodoUtil---->:deleteTodoFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
+                    LogUtil.d("TodoModel---->:deleteTodoFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
                 }
             }
         });
@@ -80,7 +80,7 @@ public class TodoUtil {
 
     /**
      * 在添加Timing的时候 更新该TODO的总时间.
-     * 在该方法使用{@link com.sy.mingding.Utils.BeanUtils.TimingUtil#addTiming(String, Integer)}  }
+     * 在该方法使用{@link TimingModel#addTiming(String, Integer)}  }
      * @param todoid todo id
      * @param time   时间
      */

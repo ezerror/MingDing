@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.TimingUtil;
+import com.sy.mingding.Model.TimingModel;
 import com.sy.mingding.Utils.LogUtil;
 import com.sy.mingding.widget.CountdownView;
 
@@ -116,7 +116,7 @@ public class TodoTimerActivity extends AppCompatActivity {
                                         Calendar calendar= Calendar.getInstance();
                                         endTime=calendar.getTime();
                                         LogUtil.d("TimeActivity","endTime"+endTime);
-                                        TimingUtil.addTimingFromTodo(mTodoId, timing,startTime,endTime);
+                                        TimingModel.addTimingFromTodo(mTodoId, timing,startTime,endTime);
                                     }
                                 } else {
                                     time-=60;

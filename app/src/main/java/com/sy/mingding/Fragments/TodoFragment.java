@@ -22,7 +22,7 @@ import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Bean.User;
 import com.sy.mingding.R;
 import com.sy.mingding.Utils.LogUtil;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -177,7 +177,7 @@ public class TodoFragment extends BaseFragment {
 
     //Toolbar的头像刷新
     private void ToolbarRefresh() {
-        User user = UserUtil.get_user();
+        User user = UserModel.getCurrentUser();
         if (user.getIcon() != null) {
             Picasso.with(this.getContext())
                     .load(user.getIcon().getUrl())

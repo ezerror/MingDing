@@ -11,9 +11,9 @@ import android.widget.EditText;
 import com.sy.mingding.Bean.Project;
 import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Interface.ConfirmDialogInterface;
-import com.sy.mingding.Utils.BeanUtils.ProjectUtil;
-import com.sy.mingding.Utils.BeanUtils.TodoUtil;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.ProjectModel;
+import com.sy.mingding.Model.TodoModel;
+import com.sy.mingding.Model.UserModel;
 
 public class DialogUtil {
 
@@ -45,7 +45,7 @@ public class DialogUtil {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (event_id) {
                             case Constants.EVENT_ADD_PROJECT:
-                                newProject = ProjectUtil.addProject(view, editText.getText().toString());
+                                newProject = ProjectModel.addProject(view, editText.getText().toString());
                                 break;
 
                         }
@@ -72,7 +72,7 @@ public class DialogUtil {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        TodoUtil.addTodo(view, editText.getText().toString(), project, UserUtil.get_user());
+                        TodoModel.addTodo(view, editText.getText().toString(), project, UserModel.getCurrentUser());
                     }
                 });
         inputDialog.setNegativeButton("取消",

@@ -28,7 +28,7 @@ import com.sy.mingding.Utils.ActivityManager;
 import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.ContentUriUtil;
 import com.sy.mingding.Utils.LogUtil;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.UserModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -96,7 +96,7 @@ public class UserSettingActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.user_logout_btn:
-                BmobUser.logOut();
+                UserModel.getInstance().logout();
                 ActivityManager.exit();
                 Intent intent = new Intent(UserSettingActivity.this, StartActivity.class);
                 startActivity(intent);
@@ -119,7 +119,7 @@ public class UserSettingActivity extends Activity implements View.OnClickListene
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        UserUtil.User_update(mRootContentView, editText.getText().toString(), "nickname");
+                        UserModel.User_update(mRootContentView, editText.getText().toString(), "nickname");
                         showWaiting();
                     }
                 });
@@ -147,7 +147,7 @@ public class UserSettingActivity extends Activity implements View.OnClickListene
     }
 
     private void refresh() {
-        User user = UserUtil.get_user();
+        User user = UserModel.getCurrentUser();
         LogUtil.d(this, "nickname-->" + user.getNickname());
         mNickNameTV.setText(user.getNickname());
         mUserNameTV.setText(user.getUsername());
@@ -183,7 +183,7 @@ public class UserSettingActivity extends Activity implements View.OnClickListene
                                 if(e==null){
                                     //bmobFile.getFileUrl()--返回的上传文件的完整地址
                                     LogUtil.d("上传文件成功:" , profile_icon.getFileUrl());
-                                    UserUtil.User_update_icon(mRootContentView,profile_icon);
+                                    UserModel.User_update_icon(mRootContentView,profile_icon);
 
                                 }else{
                                     LogUtil.d("上传文件失败：" , e.getMessage());

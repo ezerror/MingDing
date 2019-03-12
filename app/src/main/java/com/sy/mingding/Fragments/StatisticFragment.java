@@ -27,7 +27,7 @@ import com.sy.mingding.Base.BaseFragment;
 import com.sy.mingding.Bean.Timing;
 import com.sy.mingding.Dialog.BottomAddTimingDialog;
 import com.sy.mingding.R;
-import com.sy.mingding.Utils.BeanUtils.UserUtil;
+import com.sy.mingding.Model.UserModel;
 import com.sy.mingding.Constants.Constants;
 import com.sy.mingding.Utils.DataUtil;
 import com.sy.mingding.Utils.LogUtil;
@@ -121,7 +121,7 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
         timingStatisticQuery.sum(new String[]{"time"});
         timingStatisticQuery.setHasGroupCount(true);
         timingStatisticQuery.include("todo");
-        timingStatisticQuery.addWhereEqualTo("user",UserUtil.get_user());
+        timingStatisticQuery.addWhereEqualTo("user",UserModel.getCurrentUser());
         //获取今日
         timingStatisticQuery.addWhereGreaterThanOrEqualTo("startTime", new BmobDate(DataUtil.getTodayDate().get("first")));
         timingStatisticQuery.addWhereLessThanOrEqualTo("endTime", new BmobDate(DataUtil.getTodayDate().get("last")));
@@ -220,7 +220,7 @@ public class StatisticFragment extends BaseFragment implements View.OnClickListe
         TimingBmobQuery.order("-createdAt");
         TimingBmobQuery.addWhereGreaterThanOrEqualTo("startTime", new BmobDate(DataUtil.getTodayDate().get("first")));
         TimingBmobQuery.addWhereLessThanOrEqualTo("endTime", new BmobDate(DataUtil.getTodayDate().get("last")));
-        TimingBmobQuery.addWhereEqualTo("user",UserUtil.get_user());
+        TimingBmobQuery.addWhereEqualTo("user",UserModel.getCurrentUser());
         TimingBmobQuery.findObjects(new FindListener<Timing>() {
             @Override
             public void done(List<Timing> object, BmobException e) {

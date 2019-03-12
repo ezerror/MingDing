@@ -1,4 +1,4 @@
-package com.sy.mingding.Utils.BeanUtils;
+package com.sy.mingding.Model;
 
 import android.content.Context;
 import android.os.Message;
@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class ProjectUtil {
+public class ProjectModel {
 
 //    public static void queryProjectOwner(final View view) {
 //
@@ -55,7 +55,7 @@ public class ProjectUtil {
     public static Project addProject(final View view, final String projectName){
     final Project project=new Project();
     project.setProjectName(projectName);
-    project.setUserId(UserUtil.get_user());
+    project.setUserId(UserModel.getCurrentUser());
     project.save(new SaveListener<String>() {
         @Override
         public void done(String s, BmobException e) {
@@ -94,7 +94,7 @@ public class ProjectUtil {
 
                     if (e == null) {
                         for (Todo p:object) {
-                            TodoUtil.deleteTodoFromSql(p.getObjectId());
+                            TodoModel.deleteTodoFromSql(p.getObjectId());
                         }
                     } else {
                         LogUtil.e("QUERY---",e.getMessage()+"--->"+e.getErrorCode());
@@ -112,9 +112,9 @@ public class ProjectUtil {
                     if (context != null) {
                         DialogUtil.closeWaitingDialog();
                     }
-                    LogUtil.d("ProjectUtil---->:deleteProjectFromSql","成功删除Project id:"+project.getObjectId());
+                    LogUtil.d("ProjectModel---->:deleteProjectFromSql","成功删除Project id:"+project.getObjectId());
                 }else{
-                    LogUtil.d("ProjectUtil---->:deleteProjectFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
+                    LogUtil.d("ProjectModel---->:deleteProjectFromSql","error-->"+e.getErrorCode()+"   "+e.getMessage());
                 }
             }
         });
